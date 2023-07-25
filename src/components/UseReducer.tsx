@@ -23,3 +23,20 @@ function reducer(state: TState, action: REDUCER_ACTION): TState {
       return { ...state, count: state.count - 1 };
   }
 }
+
+export default function UseReducer() {
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  return (
+    <div>
+      <div>{state.count}</div>
+
+      <button onClick={() => dispatch({ type: REDUCER_ACTION_TYPE.INCREMENT })}>
+        +
+      </button>
+      <button onClick={() => dispatch({ type: REDUCER_ACTION_TYPE.DECREMENT })}>
+        -
+      </button>
+    </div>
+  );
+}
